@@ -18,8 +18,6 @@ const createTask = async (req, res) => {
             message:err.message
         })
     }
-
-    res.json(req.body );
 };
 
 const updateTask = (req, res) => {
