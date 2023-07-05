@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     /* border: 1px solid #cccc; */
@@ -9,7 +9,8 @@
     gap: 60px;
     margin-top: 50px;
 }
-.heading{
+
+.heading {
     display: flex;
     width: 100%;
     height: 50px;
@@ -17,7 +18,8 @@
     justify-content: center;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.heading > h1 {
+
+.heading>h1 {
     width: 100%;
     text-align: center;
     font-size: 25px;
@@ -27,12 +29,62 @@
     /* font-family: 'Poppins', sans-serif; */
 }
 
-.createTaskContainer{
+.createTaskContainer {
     display: flex;
     width: 100%;
     height: 200px;
     align-items: center;
     justify-content: space-around;
-    gap: 10px;
+    gap: 5px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+input {
+    width: 65%;
+    height: 30px;
+    border: 1px solid #777777;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.8px;
+}
+ 
+.createTaskContainer > button {
+    width: 18%;
+    height: 45px;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #090580;
+    color: #FFFFFF;
+    transition-duration: 4s ease-in;
+    opacity: 0.6;
+}
+button:hover{
+   background-color: #5550e4;
+   transition-duration: 4s ease-out;
+}
+.success{
+    position: absolute;
+    top: 295px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #29AB87;
+}
+.error {
+    position: absolute;
+    top: 295px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(214, 21, 21);
 }
