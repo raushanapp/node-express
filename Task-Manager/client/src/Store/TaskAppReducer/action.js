@@ -10,7 +10,10 @@ export const createTaskApiCall = (payload) => (dispatch) => {
     .then((res) =>
      { return  dispatch({ type: types.CREATE_TASK_SUCCESS, payload: res.data })}
   ).catch((err) => {
-      return dispatch({ type: types.CREATE_TASK_FAILURE, payload: err.data })
+      return dispatch({
+        type: types.CREATE_TASK_FAILURE,
+        payload: err.response.data,
+      });
   });
 };
 
@@ -22,7 +25,7 @@ export const getAllTaskApiCall = () => (dispatch) => {
       .then((res) => {
         return dispatch({ type: types.GET_ALL_TASK_SUCCESS, payload: res.data });
       })
-      .catch((err) => {
+        .catch((err) => {
         return dispatch({ type: types.GET_ALL_TASK_FAILURE, payload: err.data });
       });
 }
