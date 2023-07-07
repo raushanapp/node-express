@@ -51,7 +51,7 @@ input {
     letter-spacing: 0.8px;
 }
  
-.createTaskContainer > button {
+.btnSubmit {
     width: 18%;
     height: 45px;
     background: none;

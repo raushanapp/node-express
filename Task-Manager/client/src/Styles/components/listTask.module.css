@@ -18,3 +18,25 @@
     text-align: justify;
 
 }
+.deleteIcons {
+    color: #777777;
+    font-size: 30px;
+    cursor: pointer;
+
+}
+.deleteIcons:hover {
+    transition: 2s;
+    color: #F24C3D;
+    font-weight: 700;
+}
+.editIcons {
+    color: #777777;
+    font-size: 30px;
+    cursor: pointer;
+
+}
+.editIcons:hover {
+    transition: 2s;
+    color: #4E4FEB;
+    font-weight: 700;
+}

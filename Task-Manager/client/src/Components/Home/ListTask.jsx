@@ -1,15 +1,39 @@
-import React from "react";
+import React, { useCallback,memo } from "react";
 import styles from '../../Styles/components/listTask.module.css'
-import {RiDeleteBin6Line} from "react-icons/ri"
-export const ListTask = ({el,id}) => {
-
+import { RiDeleteBin6Line } from "react-icons/ri"
+import { BiEdit } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getAllTaskApiCall, taskDeleteApiCall } from "../../Store/TaskAppReducer/action";
+ const ListTask= ({el,id}) => {
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+   const handleDeleteTask = useCallback((id) => {
+     if (id) {
+       dispatch(taskDeleteApiCall(id)).then((res) => {
+         console.log(res)
+         if (res.type === "DELETE_TASK_SUCCESS") {
+           dispatch(getAllTaskApiCall())
+         }
+       })
+     }
+   }, [dispatch]);
+   const handleNavigate = (id) => {
+     return navigate(`/edit-task/${id}`)
+   }
     return (
       <div key={id} className={styles.listContainer}>
         <p className={styles.title}>{el.name}</p>
-        <button className={styles.btnEdit}>
-          <RiDeleteBin6Line />
-        </button>
-        <button className={styles.btnDelete}></button>
+        <BiEdit
+         onClick={()=>handleNavigate(id)}
+          className={styles.editIcons}
+        />
+        <RiDeleteBin6Line
+         onClick={()=>handleDeleteTask(id)}
+          className={styles.deleteIcons}
+        />
       </div>
-    );
+   );
+   
 }
+export default ListTask; 

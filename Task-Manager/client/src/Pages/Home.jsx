@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "../Styles/pages/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { createTaskApiCall, getAllTaskApiCall } from "../Store/TaskAppReducer/action";
-import { ListTask } from "../Components/Home/ListTask";
+import  ListTask  from "../Components/Home/ListTask";
 function Home() {
   const [createTask, setCreateTask] = useState("");
   const [success, SetSuccess] = useState('');
@@ -10,7 +10,7 @@ function Home() {
   const [task, setTask] = useState([]);
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
-  const handleSubmitFrom = (event) => {
+  const handleSubmitFrom =(event) => {
     event.preventDefault();
     if (createTask) {
       const payload={name:createTask}
@@ -31,13 +31,14 @@ function Home() {
       });
       setCreateTask("")
     }
-  };
+  }
+    // , [createTask, dispatch]);
   useEffect(() => {
     if (data?.length === 0) {
       dispatch(getAllTaskApiCall())
     }
     setTask(data)
-  }, [data?.length, task]);
+  }, [data, data?.length, dispatch]);
   // console.log(task)
   return (
     <div className={styles.container}>
@@ -56,7 +57,7 @@ function Home() {
           value={createTask}
           onChange={(e) => setCreateTask(e.target.value)}
         />
-        <button type="submit">Add Task</button>
+        <button type="submit" className={styles.btnSubmit}>Add Task</button>
         {success ? (
           <p className={styles.success}>{ success}</p>
         ) : (
@@ -66,7 +67,7 @@ function Home() {
       {/* all task component */}
       <div className={styles.taskContainer}>
         {task.tasks?.length > 0 && task.tasks.map((el) => (
-          <ListTask id={el._id}el={el} />
+          <ListTask id={el._id}el={el} key={el._id} />
          ))}
       </div>
     </div>
