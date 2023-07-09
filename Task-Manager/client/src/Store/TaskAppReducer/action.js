@@ -30,7 +30,11 @@ export const getAllTaskApiCall = () => (dispatch) => {
       return dispatch({ type: types.GET_ALL_TASK_FAILURE, payload: err.data });
     });
 };
+// get single task
 
+
+// update task
+  
 
 // delete task by id
 export const taskDeleteApiCall = (id) => (dispatch) => {
