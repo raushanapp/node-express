@@ -11,7 +11,7 @@ import { getAllTaskApiCall, taskDeleteApiCall } from "../../Store/TaskAppReducer
    const handleDeleteTask = useCallback((id) => {
      if (id) {
        dispatch(taskDeleteApiCall(id)).then((res) => {
-         console.log(res)
+        //  console.log(res)
          if (res.type === "DELETE_TASK_SUCCESS") {
            dispatch(getAllTaskApiCall())
          }
@@ -36,4 +36,4 @@ import { getAllTaskApiCall, taskDeleteApiCall } from "../../Store/TaskAppReducer
    );
    
 }
-export default ListTask; 
+export default memo(ListTask); 

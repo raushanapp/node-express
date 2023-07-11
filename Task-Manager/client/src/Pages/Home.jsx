@@ -10,35 +10,44 @@ function Home() {
   const [task, setTask] = useState([]);
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
-  const handleSubmitFrom =(event) => {
-    event.preventDefault();
-    if (createTask) {
-      const payload={name:createTask}
-      dispatch(createTaskApiCall(payload)).then((res) => {
-        console.log(res)
-        if (res.type==="CREATE_TASK_SUCCESS"&&res.payload?.success === true) {
-          SetSuccess("Task Created Successfully")
-          dispatch(getAllTaskApiCall())
-          setTimeout(() => {
-            SetSuccess("")
-          },2000)
-        } else {
-          SetError(res.payload.msg)
-           setTimeout(() => {
-             SetError("");
-           }, 2000);
-        };
-      });
-      setCreateTask("")
-    }
-  }
-    // , [createTask, dispatch]);
+  const handleSubmitFrom = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (createTask) {
+        const payload = { name: createTask };
+        dispatch(createTaskApiCall(payload)).then((res) => {
+          // console.log(res);
+          if (
+            res.type === "CREATE_TASK_SUCCESS" &&
+            res.payload?.success === true
+          ) {
+            SetSuccess("Task Created Successfully");
+            // setTask(data)
+            dispatch(getAllTaskApiCall());
+            setTimeout(() => {
+              SetSuccess("");
+            }, 2000);
+          } else {
+            SetError(res.payload.msg);
+            setTimeout(() => {
+              SetError("");
+            }, 2000);
+          }
+        });
+        setCreateTask("");
+      }
+    },
+    [createTask, dispatch]
+  );
+  
   useEffect(() => {
     if (data?.length === 0) {
       dispatch(getAllTaskApiCall())
+      setTask(data)
     }
-    setTask(data)
-  }, [data, data?.length, dispatch]);
+      setTask(data);
+    
+  }, [data, dispatch]);
   // console.log(task)
   return (
     <div className={styles.container}>

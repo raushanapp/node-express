@@ -38,7 +38,7 @@ export const getAllTaskApiCall = () => (dispatch) => {
 
 // delete task by id
 export const taskDeleteApiCall = (id) => (dispatch) => {
-  console.log(id)
+  // console.log(id)
    dispatch({ type: types.DELETE_TASK_REQUEST });
    return axios
      .delete(`http://localhost:4000/api/v1/task/${id}`)
