@@ -24,15 +24,15 @@ export const reducer = (state = initialState, { type, payload }) => {
           isError: false,
         };
       }
-        case types.CREATE_TASK_FAILURE: {
-            console.log(payload);
+      case types.CREATE_TASK_FAILURE: {
+        console.log(payload);
         return {
           ...state,
           isLoading: false,
           isError: true,
         };
       }
-        case types.GET_ALL_TASK_REQUEST: {
+      case types.GET_ALL_TASK_REQUEST: {
         return {
           ...state,
           isLoading: true,
@@ -48,6 +48,29 @@ export const reducer = (state = initialState, { type, payload }) => {
         };
       }
       case types.GET_ALL_TASK_FAILURE: {
+        return {
+          ...state,
+          isLoading: false,
+          isError: true,
+        };
+      }
+      case types.GET_SINGLE_TASK_REQUEST: {
+        return {
+          ...state,
+          isLoading: true,
+          isError: false,
+        };
+      }
+      case types.GET_SINGLE_TASK_SUCCESS: {
+        console.log("single",payload)
+        return {
+          ...state,
+          isLoading: false,
+          data: payload,
+          isError: false,
+        };
+      }
+      case types.GET_SINGLE_TASK_FAILURE: {
         return {
           ...state,
           isLoading: false,

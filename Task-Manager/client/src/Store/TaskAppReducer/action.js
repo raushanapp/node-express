@@ -31,7 +31,24 @@ export const getAllTaskApiCall = () => (dispatch) => {
     });
 };
 // get single task
-
+export const getSingleTaskApiCall = (id) => (dispatch) => {
+  console.log("action",id)
+  dispatch({ type: types.GET_SINGLE_TASK_REQUEST});
+  return axios
+    .get(`http://localhost:4000/api/v1/task/${id}`)
+    .then((res) => {
+      return dispatch({
+        type: types.GET_SINGLE_TASK_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      return dispatch({
+        type: types.GET_SINGLE_TASK_FAILURE,
+        payload: err.data,
+      });
+    });
+}
 
 // update task
   

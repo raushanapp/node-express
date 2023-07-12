@@ -10,7 +10,7 @@ export const GET_ALL_TASK_FAILURE = "GET_ALL_TASK_FAILURE";
 
 // get single task with id
 export const GET_SINGLE_TASK_REQUEST = "GET_SINGLE_TASK_REQUEST";
-export const GETSINGLEL_TASK_SUCCESS = "GET_SINGLE_TASK_SUCCESS";
+export const GET_SINGLE_TASK_SUCCESS = "GET_SINGLE_TASK_SUCCESS";
 export const GET_SINGLE_TASK_FAILURE = "GET_SINGLE_TASK_FAILURE";
 
 // update the with id  task

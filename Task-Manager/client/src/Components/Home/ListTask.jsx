@@ -4,7 +4,7 @@ import { RiDeleteBin6Line } from "react-icons/ri"
 import { BiEdit } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getAllTaskApiCall, taskDeleteApiCall } from "../../Store/TaskAppReducer/action";
+import { getAllTaskApiCall, getSingleTaskApiCall, taskDeleteApiCall } from "../../Store/TaskAppReducer/action";
  const ListTask= ({el,id}) => {
    const dispatch = useDispatch();
    const navigate = useNavigate();
@@ -19,6 +19,7 @@ import { getAllTaskApiCall, taskDeleteApiCall } from "../../Store/TaskAppReducer
      }
    }, [dispatch]);
    const handleNavigate = (id) => {
+     dispatch(getSingleTaskApiCall(id))
      return navigate(`/edit-task/${id}`)
    }
     return (
