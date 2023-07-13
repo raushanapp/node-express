@@ -1,0 +1,60 @@
+.formContainer {
+    display: flex;
+    width: 50%;
+    /* height: 400px; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.headingBox {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #311D3F;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.headingId {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.idText {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #311D3F;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.editableBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    border: 1px solid red;
+}
+
+.updateInput {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 15px;
+}

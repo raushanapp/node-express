@@ -22,13 +22,16 @@ function EditTask() {
     setUpdateTask(task?.task?.name)
     setIsChecked(task?.task?.completed)
   },[dispatch, id, task])
-  console.log(id, isChecked,task);
+  // console.log(id, isChecked,task);
   return (
     <form className={styles.formContainer} onSubmit={handleUpdateTask}>
+      <div className={styles.headingBox}>
+        <h1 className={styles.heading}>Update Task</h1>
+      </div>
       <div className={styles.headingId}>
         <h1 className={styles.idText}>{id}</h1>
       </div>
-      <div>
+      <div className={styles.editableBox}>
         <div className={styles.updateInput}>
           <input
             type="text"
