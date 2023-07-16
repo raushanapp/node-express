@@ -1,27 +1,63 @@
 import React, { useEffect, useState } from "react";
 import styles from "../Styles/pages/editTask.module.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleTaskApiCall } from "../Store/TaskAppReducer/action";
+import {
+  getAllTaskApiCall,
+  getSingleTaskApiCall,
+  updateTaskApiCall,
+} from "../Store/TaskAppReducer/action";
 
 function EditTask() {
   const { id } = useParams();
   const [updateTask, setUpdateTask] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [showSuccess, SetShowSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const task=useSelector((state)=>state?.data)
+  const task = useSelector((state) => state?.data);
 
-  const handleUpdateTask = (e) => {
-    e.preventDefault();
-
-  }
+  const handleUpdateTask = (event) => {
+    event.preventDefault();
+    if (isChecked && updateTask) {
+      // console.log(isChecked, updateTask, "up...");
+      const payload = {
+        name: updateTask,
+        completed: isChecked,
+        _id: id,
+      };
+      dispatch(updateTaskApiCall(payload)).then((res) => {
+        // console.log(res);
+        if (res.type === 'UPDATE_TASK_SUCCESS' && res.payload.success === true) {
+          setError(true);
+          SetShowSuccess(true);
+          setTimeout(() => {
+            setError(false);
+            SetShowSuccess(false);
+            dispatch(getAllTaskApiCall());
+            navigate("/")
+          }, 2000);
+          
+        } else {
+          setError(true);
+          SetShowSuccess(false);
+          setTimeout(() => {
+            setError(false)
+            // SetShowSuccess(false);
+          },2000)
+        }
+      
+      });
+    }
+  };
   useEffect(() => {
-    if (task?.length === 0 &&id) {
-       dispatch(getSingleTaskApiCall(id))
-      }
-    setUpdateTask(task?.task?.name)
-    setIsChecked(task?.task?.completed)
-  },[dispatch, id, task])
+    if (task?.length === 0 && id) {
+      dispatch(getSingleTaskApiCall(id));
+    }
+    setUpdateTask(task?.task?.name);
+    setIsChecked(task?.task?.completed);
+  }, [dispatch, id, task]);
   // console.log(id, isChecked,task);
   return (
     <form className={styles.formContainer} onSubmit={handleUpdateTask}>
@@ -39,16 +75,33 @@ function EditTask() {
             value={updateTask}
             onChange={(e) => setUpdateTask(e.target.value)}
           />
-          <button type="submit">Update</button>
+          <button type="submit" className={styles.btn}>
+            Update
+          </button>
         </div>
         <div className={styles.checkContainer}>
           <label htmlFor="">Completed</label>
           <input
+            className={styles.chekBox1}
             type="checkbox"
             checked={isChecked}
             onChange={() => setIsChecked(!isChecked)}
           />
         </div>
+        {/* after updateing then showing success fully update */}
+        {error ? (
+          <div className={styles.success}>
+            {showSuccess ? (
+              <p className={styles.message}>Successfully Updated</p>
+            ) : (
+              <p className={styles.error}>
+                Something went wrong please try again
+              </p>
+            )}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </form>
   );

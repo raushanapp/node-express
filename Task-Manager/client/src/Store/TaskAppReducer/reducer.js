@@ -62,7 +62,7 @@ export const reducer = (state = initialState, { type, payload }) => {
         };
       }
       case types.GET_SINGLE_TASK_SUCCESS: {
-        console.log("single",payload)
+        console.log("single", payload);
         return {
           ...state,
           isLoading: false,
@@ -71,6 +71,29 @@ export const reducer = (state = initialState, { type, payload }) => {
         };
       }
       case types.GET_SINGLE_TASK_FAILURE: {
+        return {
+          ...state,
+          isLoading: false,
+          isError: true,
+        };
+      }
+      case types.UPDATE_TASK_REQUEST: {
+        return {
+          ...state,
+          isLoading: true,
+          isError: false,
+        };
+      }
+      case types.UPDATE_TASK_SUCCESS: {
+        console.log("single", payload);
+        return {
+          ...state,
+          isLoading: false,
+          data: payload,
+          isError: false,
+        };
+      }
+      case types.UPDATE_TASK_FAILURE: {
         return {
           ...state,
           isLoading: false,

@@ -48,7 +48,7 @@
     align-items: center;
     justify-content: space-around;
     gap: 10px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .updateInput {
@@ -57,4 +57,80 @@
     align-items: center;
     justify-content: space-around;
     padding: 10px 15px;
+}
+
+.updateInput>input {
+    width: 60%;
+    border: 1px solid #cccc;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    color: #777777;
+}
+
+.btn {
+    width: 20%;
+    padding: 15px 20px;
+    background: none;
+    border-radius: 25px;
+    border: none;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: #30A2FF;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transition: 1s ease-in-out;
+    background-color: #6973e7;
+    opacity: 0.;
+}
+
+.checkContainer {
+    width: 35%;
+    display: flex;
+    margin-right: auto;
+    align-items: center;
+    justify-content: space-around;
+    /* padding: 10px 15px; */
+}
+
+.checkContainer>label {
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #777777;
+}
+
+.chekBox1[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.success {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+}
+
+.message {
+    position: absolute;
+    top: 295px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #29AB87;
+}
+.error {
+    position: absolute;
+    top: 295px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(214, 21, 21);
 }

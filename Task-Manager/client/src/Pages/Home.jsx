@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createTaskApiCall, getAllTaskApiCall } from "../Store/TaskAppReducer/action";
 import  ListTask  from "../Components/Home/ListTask";
 function Home() {
+  console.log("back...")
   const [createTask, setCreateTask] = useState("");
   const [success, SetSuccess] = useState('');
   const [error, SetError] = useState("");
@@ -39,6 +40,10 @@ function Home() {
     },
     [createTask, dispatch]
   );
+  // when we click browser back button then this useeffect call data will mount first again
+  useEffect(() => {
+    dispatch(getAllTaskApiCall())
+  }, [dispatch])
   
   useEffect(() => {
     if (data?.length === 0) {
@@ -46,7 +51,6 @@ function Home() {
       setTask(data)
     }
       setTask(data);
-    
   }, [data, dispatch]);
   // console.log(task)
   return (

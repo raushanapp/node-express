@@ -68,7 +68,7 @@ input {
     transition-duration: 4s ease-in;
     opacity: 0.6;
 }
-button:hover{
+.btnSubmit:hover{
    background-color: #5550e4;
    transition-duration: 4s ease-out;
 }
